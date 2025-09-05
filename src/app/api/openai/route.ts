@@ -30,9 +30,10 @@ export async function POST(req: NextRequest) {
     const data = await response.json();
     const reply = data.choices?.[0]?.message?.content || 'No response from OpenAI.';
     return NextResponse.json({ reply });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error('API route error:', err);
-    return NextResponse.json({ error: 'API route error', details: err.message }, { status: 500 });
+    const errorMsg = err instanceof Error ? err.message : String(err);
+    return NextResponse.json({ error: 'API route error', details: errorMsg }, { status: 500 });
   }
 }
 

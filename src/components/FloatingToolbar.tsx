@@ -30,7 +30,7 @@ const FloatingToolbar: React.FC<FloatingToolbarProps> = ({
       className="absolute bg-white border rounded shadow p-2 z-10 w-72"
       style={{ top, left }}
     >
-      <div className="mb-2 text-xs text-gray-500">Selected: "{selectedText}"</div>
+  <div className="mb-2 text-xs text-gray-500">Selected: &quot;{selectedText}&quot;</div>
       <div className="flex gap-2 mb-2">
         <button className="px-2 py-1 bg-blue-500 text-white rounded text-xs" onClick={onEditWithAI}>Edit with AI</button>
         <button className="px-2 py-1 bg-gray-200 rounded text-xs" onClick={onPreview}>Preview</button>

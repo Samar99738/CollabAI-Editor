@@ -17,7 +17,8 @@ export async function POST(req: NextRequest) {
     // Extract summary from DuckDuckGo response
     const summary = data.AbstractText || data.Answer || data.Definition || 'No summary found.';
     return NextResponse.json({ summary });
-  } catch (err: any) {
-    return NextResponse.json({ error: 'API route error', details: err.message }, { status: 500 });
+  } catch (err: unknown) {
+    const errorMsg = err instanceof Error ? err.message : String(err);
+    return NextResponse.json({ error: 'API route error', details: errorMsg }, { status: 500 });
   }
 }
